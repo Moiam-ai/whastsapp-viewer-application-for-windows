@@ -1,0 +1,49 @@
+{
+  "name": "chatvault",
+  "version": "0.1.0",
+  "description": "Private, offline archive viewer for WhatsApp exports.",
+  "main": "out/main/index.js",
+  "author": "ChatVault",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build && electron-builder",
+    "build:dir": "electron-vite build && electron-builder --dir",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.13.12",
+    "adm-zip": "^0.5.16",
+    "better-sqlite3": "^12.6.2",
+    "mime-types": "^3.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
+    "@types/adm-zip": "^0.5.7",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^25.0.3",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^5.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.16"
+  },
+  "build": {
+    "appId": "com.chatvault.archive",
+    "productName": "ChatVault",
+    "asar": true,
+    "files": ["out/**/*", "package.json"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true },
+    "directories": { "output": "release" }
+  }
+}
